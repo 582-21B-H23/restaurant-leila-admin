@@ -10,14 +10,17 @@
  */
 function lireTout() {
   $bd = ouvrirConnexion();
-  $sql = "SELECT * FROM categorie";
+  $sql = "SELECT * FROM categorie ORDER BY id_parent";
   return lire($bd, $sql);
 }
 
 function ajouter($categorie) {
   $bd = ouvrirConnexion();
   // A compléter...
-  // $sql = "INSERT INTO categorie VALUES ()";
+  $nom = $categorie['nom'];
+  $parent = $categorie['parent'];
+  // ATTENTION : INJECTION SQL POSSIBLE : à corriger au prochain cours !
+  $sql = "INSERT INTO categorie VALUES (NULL, '$nom', NULL, $parent)";
   return creer($bd, $sql);
 }
 
