@@ -24,18 +24,30 @@ function lireCategoriesPrincipales() {
 
 function ajouter($categorie) {
   $bd = ouvrirConnexion();
-  // A compléter...
+  // Prévenir les injections SQL en assainissant les valeurs provenant 
+  // de l'extérieur de mon code
   $nom = mysqli_real_escape_string($bd, $categorie['nom']);
   $parent = (int)$categorie['parent']; 
-  // ATTENTION : INJECTION SQL POSSIBLE : à corriger au prochain cours !
   $sql = "INSERT INTO categorie VALUES (NULL, '$nom', NULL, $parent)";
   return creer($bd, $sql);
 }
 
 function changer($categorie) {
-
+  $bd = ouvrirConnexion();
+  $id = (int)$categorie['id'];
+  $nom = mysqli_real_escape_string($bd, $categorie['nom']);
+  $parent = (int)$categorie['parent']; 
+  $sql = "UPDATE categorie SET nom='$nom', id_parent=$parent WHERE id=$id";
+  return creer($bd, $sql);
 }
 
+/**
+ * Enlève une catégorie.
+ * @param int $idCategorie : identifiant de la catégorie à enlever
+ * @return int : nombre d'enregistrements enlevés
+ */
 function enlever($idCategorie) {
-
+  $id = (int)$idCategorie;
+  $bd = ouvrirConnexion();
+  return supprimer($bd, "DELETE FROM categorie WHERE id=$id");
 }

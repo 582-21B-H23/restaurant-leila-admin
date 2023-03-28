@@ -12,15 +12,19 @@
 				ajouter($_POST);
 				break;
 			case 'modification': 
-
+				changer($_POST);
 				break;
 			case 'suppression':
-
+				enlever($_POST['id']);
 				break;
 		}
 	}
 	
 	$categories = lireTout();
+	// Exercice : utiliser une fonction PHP pour filtrer le tableau $categories 
+	// et obtenir un nouveau tableau contenant seulement les catégories principales
+	// c'est à dire celles pour lesquelles id_parent = 0
+	// Suggestion utiliser une fonction de tableau PHP (array_filter)
 	$categoriesPrincipales = lireCategoriesPrincipales();
 	//print_r($categoriesPrincipales);
 ?>
@@ -55,19 +59,24 @@
 		<?php foreach($categories as $categorie) : ?>
 		<!-- L'attribut action réfère à l'URL qui gère le formulaire -->
 		<form method="post">
-			
 			<span><input readonly type="text" name="id" value="<?= $categorie['id']; ?>"></span>
 			<span><input type="text" name="nom" value="<?= $categorie['nom']; ?>"></span>
 			<span>
 				<select name="parent">
 					<option <?= ($categorie['id_parent']==0) ? ' selected ' : ''; ?> value="0">-- aucun parent</option>
-					<option <?= ($categorie['id_parent']==1) ? ' selected ' : ''; ?> value="1">Plat</option>
-					<option <?= ($categorie['id_parent']==2) ? ' selected ' : ''; ?> value="2">Vin</option>
+					<?php foreach($categoriesPrincipales as $cp) : ?>	
+						<option 
+							<?= ($categorie['id_parent']==$cp['id']) ? ' selected ' : ''; ?> 
+							value="<?= $cp['id']; ?>"
+						>
+							<?= $cp['nom']; ?>
+						</option>
+					<?php endforeach; ?>
 				</select>
 			</span>
 			<span class="action">
-				<button formaction="categories.php?op=modification" class="btn btn-modifier">modifier</button>
-				<button formaction="categories.php?op=suppression" class="btn btn-supprimer">supprimer</button>
+				<button type="submit" formaction="categories.php?op=modification" class="btn btn-modifier">modifier</button>
+				<button type="submit" formaction="categories.php?op=suppression" class="btn btn-supprimer">supprimer</button>
 			</span>
 		</form>
 		<?php endforeach; ?>
