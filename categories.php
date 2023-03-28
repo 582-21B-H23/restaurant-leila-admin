@@ -21,7 +21,8 @@
 	}
 	
 	$categories = lireTout();
-	//print_r($categories);
+	$categoriesPrincipales = lireCategoriesPrincipales();
+	//print_r($categoriesPrincipales);
 ?>
 <section class="liste-enregistrements">
 	<h2><code>Catégories</code></h2>
@@ -39,13 +40,14 @@
 			<span>
 				<select name="parent">
 					<option value="">Choisir</option>
-					<option value="NULL">-- aucun parent</option>
-					<option value="1">Plat</option>
-					<option value="2">Vin</option>
+					<option value="0">-- aucun parent</option>
+					<?php foreach($categoriesPrincipales as $cp) : ?>
+						<option value="<?= $cp['id']; ?>"><?= $cp['nom']; ?></option>
+					<?php endforeach; ?>
 				</select>
 			</span>
 			<span class="action">
-				<button class="btn btn-ajouter btn-plein">ajouter</button>
+				<button type="submit" class="btn btn-ajouter btn-plein">ajouter</button>
 			</span>
 		</form>
 
@@ -58,7 +60,7 @@
 			<span><input type="text" name="nom" value="<?= $categorie['nom']; ?>"></span>
 			<span>
 				<select name="parent">
-					<option <?= ($categorie['id_parent']==null) ? ' selected ' : ''; ?> value="NULL">-- aucun parent</option>
+					<option <?= ($categorie['id_parent']==0) ? ' selected ' : ''; ?> value="0">-- aucun parent</option>
 					<option <?= ($categorie['id_parent']==1) ? ' selected ' : ''; ?> value="1">Plat</option>
 					<option <?= ($categorie['id_parent']==2) ? ' selected ' : ''; ?> value="2">Vin</option>
 				</select>
