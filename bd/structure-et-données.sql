@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2023 at 05:04 PM
+-- Generation Time: Mar 30, 2023 at 04:12 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -47,11 +47,13 @@ INSERT INTO `categorie` (`id`, `nom`, `rang`, `id_parent`) VALUES
 (3, 'Entrées', 1, 1),
 (4, 'Poissons', 2, 1),
 (5, 'Viandes', 3, 1),
-(6, 'Fromages', 4, 1),
+(6, 'Fromages du Québec', 4, 1),
 (7, 'Desserts', 5, 1),
 (8, 'Vins effervescents', 1, 2),
 (9, 'Vins blancs', 2, 2),
-(10, 'Vins rouges', 3, 2);
+(10, 'Vins rouges', 3, 2),
+(42, 'Brunch', NULL, 0),
+(44, 'Cocktails et apéros', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -86,6 +88,29 @@ INSERT INTO `plat` (`id`, `nom`, `detail`, `portion`, `prix`, `id_categorie`) VA
 (11, 'Poire Louise Bonne pochée au citron doux', 'parfait glacé à la Nepeta, crumble de petit épeautre', 1, '13.00', 7),
 (12, 'Fleur de cassis de Bourgogne', 'chiboust à la vanille et chocolat grand cru de Madagascar', 1, '13.00', 7),
 (13, 'Tarte fine aux pommes de Bernard Loiseau', 'sorbet pomme verte', 1, '12.00', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id` tinyint(3) UNSIGNED NOT NULL,
+  `nom_complet` varchar(50) DEFAULT NULL,
+  `courriel` varchar(255) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `dcc` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `confirmation` char(28) NOT NULL,
+  `actif` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Les comptes doivent être activés par le super admin.'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom_complet`, `courriel`, `mdp`, `dcc`, `confirmation`, `actif`) VALUES
+(1, 'Gaston Miron', 'test@test.com', '$2y$10$ADk924OM91PEE32g3N6UP.zvM9.DFvtMxiVuile7EohMMLuQ1i5kG', '2023-03-30 02:16:10', '', 1);
 
 -- --------------------------------------------------------
 
@@ -193,6 +218,14 @@ ALTER TABLE `plat`
   ADD KEY `id_categorie` (`id_categorie`);
 
 --
+-- Indexes for table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `courriel` (`courriel`),
+  ADD UNIQUE KEY `confirmation` (`confirmation`);
+
+--
 -- Indexes for table `vin`
 --
 ALTER TABLE `vin`
@@ -207,13 +240,19 @@ ALTER TABLE `vin`
 -- AUTO_INCREMENT for table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `plat`
 --
 ALTER TABLE `plat`
   MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vin`
