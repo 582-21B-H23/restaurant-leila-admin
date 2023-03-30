@@ -1,8 +1,10 @@
 <?php
+	$module = 'utilisateur';
+	require("lib/$module-controleur.lib.php");
 	require('inclusions/entete.inc.php');
 ?>
 <section class="gestion-utilisateur">
-	<form class="connexion">
+	<form class="connexion" action="index.php?op=connexion" method="post">
 		<legend>Ouvrir une connexion</legend>
 		<div class="champs">
 			<label for="cnx-courriel">Courriel</label>

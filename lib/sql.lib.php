@@ -27,7 +27,7 @@ function soumettreRequete($cnx, $req) {
  *              associatif (par défaut) ou autre
  * @see https://www.php.net/manual/en/mysqli-result.fetch-all.php
  * 
- * @return array|boolean :
+ * @return array|boolean : 
  */
 function lire($cnx, $req, $mode=MYSQLI_ASSOC) {
   $resultat = soumettreRequete($cnx, $req);

@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+// Cette page est accessible uniquement à un utilisateur connecté
+if(!isset($_SESSION['utilisateur'])) {
+  header('Location: index.php?m=e1040');
+}
+
 require('lib/sql.lib.php');
 require('lib/'.$module.'-modele.lib.php');
 
