@@ -1,32 +1,7 @@
 <?php
+	$module = 'categorie';
+	require("lib/$module-controleur.lib.php");
 	require('inclusions/entete.inc.php');
-
-	// Lire les catégories pour l'affichage
-	require('lib/sql.lib.php');
-	require('lib/categorie-data.lib.php');
-	
-	// Vérifier si une opération est demandée 
-	if(isset($_GET['op'])) {
-		switch($_GET['op']) {
-			case 'ajout':
-				ajouter($_POST);
-				break;
-			case 'modification': 
-				changer($_POST);
-				break;
-			case 'suppression':
-				enlever($_POST['id']);
-				break;
-		}
-	}
-	
-	$categories = lireTout();
-	// Exercice : utiliser une fonction PHP pour filtrer le tableau $categories 
-	// et obtenir un nouveau tableau contenant seulement les catégories principales
-	// c'est à dire celles pour lesquelles id_parent = 0
-	// Suggestion utiliser une fonction de tableau PHP (array_filter)
-	$categoriesPrincipales = lireCategoriesPrincipales();
-	//print_r($categoriesPrincipales);
 ?>
 <section class="liste-enregistrements">
 	<h2><code>Catégories</code></h2>
