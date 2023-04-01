@@ -15,9 +15,9 @@
     <h2>Admin - Restaurant Leila</h2>
     <nav class="navigation-principale">
       <ul>
-        <li><a href="categories.php">Catégories</a></li>
-        <li><a href="#">Plats</a></li>
-        <li><a href="#">Vins</a></li>
+        <li class="<?= ($module=='categorie') ? 'actif' : '' ?>"><a href="categories.php">Catégories</a></li>
+        <li class="<?= ($module=='plat') ? 'actif' : '' ?>"><a href="plats.php">Plats</a></li>
+        <li class="<?= ($module=='vin') ? 'actif' : '' ?>"><a href="vins.php">Vins</a></li>
       </ul>
     </nav>
   </header>
