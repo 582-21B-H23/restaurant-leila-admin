@@ -11,7 +11,8 @@
  * 
  * @return array : tableau de tableaux contenant les vins
  */
-function lireTout($groupe=false) {
+function lireTout($groupe=false) 
+{
   $bd = ouvrirConnexion();
   // La première colonne sera utilisée pour regrouper les enregistrements
   // obtenu de la requête.

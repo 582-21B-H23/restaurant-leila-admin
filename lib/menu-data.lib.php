@@ -11,7 +11,8 @@
  * 
  * @return array : tableau de tableaux contenant les plats
  */
-function lireTout($groupe=false) {
+function lireTout($groupe=false) 
+{
   $bd = ouvrirConnexion();
   $sql = "SELECT 
             c.nom AS nomCategorie,

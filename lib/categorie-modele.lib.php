@@ -8,21 +8,22 @@
  * 
  * @return array : tableau de tableaux contenant les catégories
  */
-function lireTout() {
+function lireTout() 
+{
   $bd = ouvrirConnexion();
   $sql = "SELECT * FROM categorie WHERE id <> 0 ORDER BY id_parent ";
   return lire($bd, $sql);
 }
 
-function lireCategoriesPrincipales() {
+function lireCategoriesPrincipales() 
+{
   $bd = ouvrirConnexion();
   $sql = "SELECT * FROM categorie WHERE id <> 0 AND id_parent=0";
   return lire($bd, $sql);
 }
 
-
-
-function ajouter($categorie) {
+function ajouter($categorie) 
+{
   $bd = ouvrirConnexion();
   // Prévenir les injections SQL en assainissant les valeurs provenant 
   // de l'extérieur de mon code
@@ -32,7 +33,8 @@ function ajouter($categorie) {
   return creer($bd, $sql);
 }
 
-function changer($categorie) {
+function changer($categorie) 
+{
   $bd = ouvrirConnexion();
   $id = (int)$categorie['id'];
   $nom = mysqli_real_escape_string($bd, $categorie['nom']);
@@ -46,7 +48,8 @@ function changer($categorie) {
  * @param int $idCategorie : identifiant de la catégorie à enlever
  * @return int : nombre d'enregistrements enlevés
  */
-function enlever($idCategorie) {
+function enlever($idCategorie) 
+{
   $id = (int)$idCategorie;
   $bd = ouvrirConnexion();
   return supprimer($bd, "DELETE FROM categorie WHERE id=$id");
