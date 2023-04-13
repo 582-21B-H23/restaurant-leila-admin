@@ -15,6 +15,6 @@ function un($courriel)
   $bd = ouvrirConnexion();
   $courriel = mysqli_real_escape_string($bd, $courriel);
   $sql = "SELECT * FROM utilisateur WHERE courriel = '$courriel'";
-  return lire($bd, $sql);
+  return lireUn($bd, $sql);
 }
 

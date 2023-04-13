@@ -13,11 +13,19 @@
 <body>
   <header>
     <h2>Admin - Restaurant Leila</h2>
-    <nav class="navigation-principale">
-      <ul>
-        <li class="<?= ($module=='categorie') ? 'actif' : '' ?>"><a href="categories.php">Catégories</a></li>
-        <li class="<?= ($module=='plat') ? 'actif' : '' ?>"><a href="plats.php">Plats</a></li>
-        <li class="<?= ($module=='vin') ? 'actif' : '' ?>"><a href="vins.php">Vins</a></li>
-      </ul>
-    </nav>
+    <?php if(isset($_SESSION['utilisateur'])) : ?>
+      <div class="nav">
+        <nav class="navigation-principale">
+          <ul>
+            <li class="<?= ($module=='categorie') ? 'actif' : '' ?>"><a href="categories.php">Catégories</a></li>
+            <li class="<?= ($module=='plat') ? 'actif' : '' ?>"><a href="plats.php">Plats</a></li>
+            <li class="<?= ($module=='vin') ? 'actif' : '' ?>"><a href="vins.php">Vins</a></li>
+          </ul>
+        </nav>
+        <div class="profile-utilisateur">
+          Bonjour <?= $_SESSION['utilisateur']['nom_complet'] ?>
+          <button>Déconnexion</button>
+        </div>
+      </div>
+    <?php endif; ?>
   </header>
