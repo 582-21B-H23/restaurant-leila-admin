@@ -20,5 +20,8 @@ const MESSAGES = [
     'type'  => 'erreur',
     'texte' => "Vous devez être connecté pour accéder à cette page"
   ],
-
+  'e2000' =>  [
+    'type'  => 'info',
+    'texte' => "Votre compte est prêt : vous devez confirmer votre adresse courriel..."
+  ]
 ];

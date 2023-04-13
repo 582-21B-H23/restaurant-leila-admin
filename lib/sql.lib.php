@@ -62,9 +62,14 @@ function lireUn($cnx, $req)
 */
 function creer($cnx, $req) 
 {
-  $resultat = soumettreRequete($cnx, $req);
-  if($resultat) {
-    return mysqli_insert_id($cnx);
+  try {
+    $resultat = soumettreRequete($cnx, $req);
+    if($resultat) {
+      return mysqli_insert_id($cnx);
+    }
+  }
+  catch(mysqli_sql_exception $erreur) {
+    return '__mye__'.$erreur -> getCode();
   }
 }
 

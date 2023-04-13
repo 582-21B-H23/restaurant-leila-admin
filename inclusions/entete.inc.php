@@ -1,3 +1,4 @@
+<?php require('lib/util.lib.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,6 +12,15 @@
   <title>Admin :: Restaurant Leila</title>
 </head>
 <body>
+  <?php if(isset($_GET['m'])) : 
+      $msgCode = $_GET['m'];
+      $msgType = MESSAGES[$msgCode]['type'];
+      $msgTexte = MESSAGES[$msgCode]['texte'];
+  ?>
+  <div class="message <?= $msgType; ?>">
+    <?= $msgTexte; ?>
+  </div>
+  <?php endif; ?>
   <header>
     <h2>Admin - Restaurant Leila</h2>
     <?php if(isset($_SESSION['utilisateur'])) : ?>

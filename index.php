@@ -23,7 +23,11 @@
 	</form>
 
 	<!-- Formulaire de création de compte -->
-	<form class="nouveau <?= (isset($_GET['frm']) && $_GET['frm'] == 'nouveau') ? 'actif' : '' ; ?>" action="index.php?op=nouveau" method="post">
+	<form 
+		class="nouveau <?= (isset($_GET['frm']) && $_GET['frm'] == 'nouveau') ? 'actif' : '' ; ?>" 
+		action="index.php?op=nouveau" 
+		method="post"
+	>
 		<legend>Créer un nouveau compte</legend>
 		<div class="champs">
 			<label for="nv-courriel">Courriel</label>
