@@ -21,7 +21,24 @@ body header h2 {
   color: white;
   padding: 1rem;
 }
-body header nav {
+
+body header div.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body header div.nav .profil-utilisateur a {
+  display: inline-block;
+  padding: 0.5rem;
+  background-color: #900;
+  color: #eee;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  border: 1px solid #333;
+}
+
+body header {
   background-color: #aaa;
 }
 body header nav ul {
@@ -46,13 +63,18 @@ body header nav ul li.actif {
   background-color: #005c4a;
 }
 body section.gestion-utilisateur form {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 50%;
   margin: 3rem auto;
   font-family: "Roboto";
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+body section.gestion-utilisateur form.actif {
+  display: flex;
+}
+
+
 body section.gestion-utilisateur form legend {
   background-color: #005c4a;
   color: #eee;

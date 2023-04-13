@@ -22,9 +22,9 @@
             <li class="<?= ($module=='vin') ? 'actif' : '' ?>"><a href="vins.php">Vins</a></li>
           </ul>
         </nav>
-        <div class="profile-utilisateur">
+        <div class="profil-utilisateur">
           Bonjour <?= $_SESSION['utilisateur']['nom_complet'] ?>
-          <button>Déconnexion</button>
+          <a href="index.php?op=deconnexion">Déconnexion</a>
         </div>
       </div>
     <?php endif; ?>

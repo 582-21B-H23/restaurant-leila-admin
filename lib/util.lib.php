@@ -12,7 +12,10 @@ const MESSAGES = [
     'type'  => 'avertissement',
     'texte' => "Contactez votre administrateur pour activer votre compte"
   ],
-  
+  'e1030' =>  [
+    'type'  => 'succes',
+    'texte' => "Vous avez bien été déconnecté."
+  ],
   'e1040' =>  [
     'type'  => 'erreur',
     'texte' => "Vous devez être connecté pour accéder à cette page"

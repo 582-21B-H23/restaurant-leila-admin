@@ -2,9 +2,9 @@
 session_start();
 
 // Cette page est accessible uniquement à un utilisateur connecté
-if(isset($_SESSION['utilisateur'])) {
-  header('Location: categories.php');
-}
+// if(isset($_SESSION['utilisateur'])) {
+//   header('Location: categories.php');
+// }
 
 require('lib/sql.lib.php');
 require('lib/'.$module.'-modele.lib.php');
@@ -35,9 +35,16 @@ if(isset($_GET['op'])) {
       else {
         $codeErreur = 'e1000';
       }
+      if(isset($codeErreur)) {
+        header("Location: index.php?m=$codeErreur");
+      }
       break;
     case 'deconnexion': 
-      
+      // Supprimer la variable de session qui établit l'état de connexion
+      unset($_SESSION['utilisateur']);
+      // Rediriger vers la page de connexion avec un message confirmant
+      // déconnexion
+      header('Location: index.php?m=e1030');
       break;
     case 'nouveau':
       
