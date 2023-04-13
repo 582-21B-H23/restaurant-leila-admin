@@ -32,32 +32,48 @@ body {
       color: $mono-blanc;
       padding: 1rem;
     }
-    
-    nav {
+    div.nav {
       background-color: $mono-claire;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      nav.navigation-principale {
+        ul {
+          margin: 0;
+          padding: 0;
 
-      ul {
-        margin: 0;
-        padding: 0;
+          li {
+            list-style: none;
+            display: inline-block;
+            margin: 0.75rem 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: $mono-sombre;
+            color: $mono-blanc;
+            border: 2px solid $mono-sombre;
+            border-radius: 0.5rem;
+            cursor: pointer;
 
-        li {
-          list-style: none;
-          display: inline-block;
-          margin: 0.75rem 0.5rem;
-          padding: 0.5rem 1rem;
-          background-color: $mono-sombre;
-          color: $mono-blanc;
-          border: 2px solid $mono-sombre;
-          border-radius: 0.5rem;
-          cursor: pointer;
+            &:first-of-type {
+              margin-left: 1rem;
+            }
 
-          &:first-of-type {
-            margin-left: 1rem;
+            &.actif {
+              background-color: $table-accent;
+            }
           }
-
-          &.actif {
-            background-color: $table-accent;
-          }
+        }
+      }
+      div.profil-utilisateur {
+        margin-right: 1rem;
+        display: flex;
+        column-gap: 0.5rem;
+        align-items: center;
+        a {
+          background-color: #900;
+          color: #eee;
+          padding: 0.5rem;
+          border-radius: 0.3rem;
+          border: 1px solid #444;
         }
       }
     }
@@ -66,12 +82,16 @@ body {
   // Formulaires de gestion des utilisateurs
   section.gestion-utilisateur {
     form {
-      display: flex;
+      display: none;
       flex-direction: column;
       width: 50%;
       margin: 3rem auto;
       font-family: 'Roboto';
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+      &.actif {
+        display: flex;
+      }
       
       legend {
         background-color: $table-accent;
@@ -150,7 +170,7 @@ body {
       display: table-row-group;
       
       // Une rangée de données
-      article {
+      form {
         display: table-row;
         border-bottom: thin solid $mono-claire;
         

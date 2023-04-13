@@ -21,31 +21,17 @@ body header h2 {
   color: white;
   padding: 1rem;
 }
-
 body header div.nav {
+  background-color: #aaa;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-body header div.nav .profil-utilisateur a {
-  display: inline-block;
-  padding: 0.5rem;
-  background-color: #900;
-  color: #eee;
-  font-weight: bold;
-  border-radius: 0.3rem;
-  border: 1px solid #333;
-}
-
-body header {
-  background-color: #aaa;
-}
-body header nav ul {
+body header div.nav nav.navigation-principale ul {
   margin: 0;
   padding: 0;
 }
-body header nav ul li {
+body header div.nav nav.navigation-principale ul li {
   list-style: none;
   display: inline-block;
   margin: 0.75rem 0.5rem;
@@ -56,11 +42,24 @@ body header nav ul li {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-body header nav ul li:first-of-type {
+body header div.nav nav.navigation-principale ul li:first-of-type {
   margin-left: 1rem;
 }
-body header nav ul li.actif {
+body header div.nav nav.navigation-principale ul li.actif {
   background-color: #005c4a;
+}
+body header div.nav div.profil-utilisateur {
+  margin-right: 1rem;
+  display: flex;
+  column-gap: 0.5rem;
+  align-items: center;
+}
+body header div.nav div.profil-utilisateur a {
+  background-color: #900;
+  color: #eee;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #444;
 }
 body section.gestion-utilisateur form {
   display: none;
@@ -73,8 +72,6 @@ body section.gestion-utilisateur form {
 body section.gestion-utilisateur form.actif {
   display: flex;
 }
-
-
 body section.gestion-utilisateur form legend {
   background-color: #005c4a;
   color: #eee;
